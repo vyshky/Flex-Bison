@@ -1,12 +1,12 @@
+%option noyywrap
+%option yylineno
+
 %{
 	#define TOKEN_NUBMER 1
 	#define LITERAL 2
 	#include <iostream>
 	#include "Header.h"
 %}
-
-%option noyywrap
-%option yylineno
 
 %%
 [0-9] {
