@@ -20,10 +20,10 @@
     </Flex>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="strparser\lexer.cpp.flex.cpp">
+    <ClCompile Include="strparser\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="strparser\main.cpp">
+    <ClCompile Include="strparser\lexer.cpp.flex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
