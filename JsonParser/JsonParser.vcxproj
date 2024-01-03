@@ -19,22 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Flex Include="strparser\lexer.cpp.l" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="parser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="strparser\lexer.cpp.flex.cpp" />
-    <ClCompile Include="strparser\main.cpp" />
+    <Flex Include="flex.l" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="strparser\Header.h" />
+    <ClCompile Include="flex.flex.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{203df953-8c74-4609-9663-85d56f729f70}</ProjectGuid>
-    <RootNamespace>FlexBison</RootNamespace>
+    <ProjectGuid>{d8844b1b-c775-4c51-99a1-09575431b732}</ProjectGuid>
+    <RootNamespace>JsonParser</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Flex&amp;Bison</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
