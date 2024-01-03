@@ -19,15 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="header.h" />
     <ClInclude Include="parser.h" />
   </ItemGroup>
   <ItemGroup>
     <Flex Include="flex.l" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bison.tab.cpp" />
     <ClCompile Include="flex.flex.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Bison Include="bison.y">
+      <FileType>Document</FileType>
+    </Bison>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -65,7 +72,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\..\..\..\..\..\Dev\win_flex_bison\custom_build_rules\win_flex_only\win_flex_custom_build.props" />
+    <Import Project="..\..\..\..\..\..\Dev\win_flex_bison\custom_build_rules\win_flex_bison\win_flex_bison_custom_build.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -140,6 +147,6 @@
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\..\..\..\..\Dev\win_flex_bison\custom_build_rules\win_flex_only\win_flex_custom_build.targets" />
+    <Import Project="..\..\..\..\..\..\Dev\win_flex_bison\custom_build_rules\win_flex_bison\win_flex_bison_custom_build.targets" />
   </ImportGroup>
 </Project>

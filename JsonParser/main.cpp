@@ -1,10 +1,21 @@
+//#include <iostream>
+//#include "parser.h"
+//#include "header.h"
+//
+//int main()
+//{
+//	setlocale(LC_ALL, "Russian");
+//	yylex(); // Flex
+//	//yyparse(); // Bison
+//	return 0;
+//}
+
+#include "parser.h"
 #include <iostream>
-#include "Header.h"
+using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-	yylex(); // Flex
-	//yyparse(); // Bison
+	yyparse();
 	return 0;
 }
