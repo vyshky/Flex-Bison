@@ -8,9 +8,10 @@
 	#include "Header.h"
 %}
 
-DIGIT[0-9]
+DIGIT[0 - 9]
 
 %%
+foobar   ECHO; std::cout << " - Найден токен foobar\n";
 {DIGIT}+ {
 	std::cout << "Найден токен DIGIT\n";
 }
