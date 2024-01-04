@@ -773,7 +773,7 @@ YY_RULE_SETUP
 case 3:
 YY_RULE_SETUP
 #line 14 "scaner.l"
-{ yylval.value = std::stod(yytext); std::cout<< yylval.value << " ";  return TOKEN_NUMBER; }
+{ yylval.value = std::stod(yytext); return TOKEN_NUMBER; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP

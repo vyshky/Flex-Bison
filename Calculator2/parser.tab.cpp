@@ -1052,7 +1052,7 @@ yyreduce:
     {
   case 5: /* result: exp EOL  */
 #line 27 "parser.y"
-                  { std::cout << "Result = " << (yyvsp[-1].value); }
+                  { std::cout << "Result = " << (yyvsp[-1].value) << "\n"; }
 #line 1057 "parser.tab.cpp"
     break;
 

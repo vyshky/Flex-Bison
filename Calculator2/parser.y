@@ -24,7 +24,7 @@ programma:
 	;
 
 result: EOL
-	| exp EOL { std::cout << "Result = " << $1; }
+	| exp EOL { std::cout << "Result = " << $1 << "\n"; }
 	;
 
 exp: TOKEN_NUMBER { $$ = $1; }
