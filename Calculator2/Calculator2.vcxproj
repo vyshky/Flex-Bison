@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7adc57ba-b0d4-40ea-af1c-cfc68d5700fe}</ProjectGuid>
-    <RootNamespace>Calculator</RootNamespace>
+    <ProjectGuid>{a3e2f037-ed23-41b4-aaf3-d292eadc1963}</ProjectGuid>
+    <RootNamespace>Calculator2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,25 +128,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Flex Include="scaner.l">
+      <FileType>Document</FileType>
+    </Flex>
+  </ItemGroup>
+  <ItemGroup>
+    <Bison Include="parser.y" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="parser.tab.cpp" />
     <ClCompile Include="scaner.flex.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="parser.tab.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Bison Include="parser.y">
-      <FileType>Document</FileType>
-    </Bison>
-  </ItemGroup>
-  <ItemGroup>
-    <Flex Include="scaner.l">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-i %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-i %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-i %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-i %(AdditionalOptions)</AdditionalOptions>
-    </Flex>
+    <ClInclude Include="Header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
