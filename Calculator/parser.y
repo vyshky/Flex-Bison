@@ -29,7 +29,7 @@
 programm:
 	| T_EOL { std::cout << "\n> "; } programm
 	// TODO :: сделать так, чтобу можно было отправть несколько токенов сразу дла Iteratora
-	| T_INDEX T_EOL { std::cout << "Получил - " << yylval.text << "\n"; } programm
+	| T_INDEX T_EOL { std::cout << "Получил - " << yylval.text << "\n> "; } programm
 	| T_EXIT T_EOL {  std::cout << "Shutdown"; exit(1); }
 	;
 

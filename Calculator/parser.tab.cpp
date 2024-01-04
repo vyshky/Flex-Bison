@@ -481,7 +481,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    28,    28,    29,    29,    31,    31,    32
+       0,    29,    29,    30,    30,    32,    32,    33
 };
 #endif
 
@@ -1054,19 +1054,19 @@ yyreduce:
   switch (yyn)
     {
   case 3: /* $@1: %empty  */
-#line 29 "parser.y"
+#line 30 "parser.y"
                 { std::cout << "\n> "; }
 #line 1060 "parser.tab.cpp"
     break;
 
   case 5: /* $@2: %empty  */
-#line 31 "parser.y"
-                        { std::cout << "Получил - " << yylval.text << "\n"; }
+#line 32 "parser.y"
+                        { std::cout << "Получил - " << yylval.text << "\n> "; }
 #line 1066 "parser.tab.cpp"
     break;
 
   case 7: /* programm: T_EXIT T_EOL  */
-#line 32 "parser.y"
+#line 33 "parser.y"
                        {  std::cout << "Shutdown"; exit(1); }
 #line 1072 "parser.tab.cpp"
     break;
@@ -1266,4 +1266,4 @@ yyreturn:
   return yyresult;
 }
 
-#line 35 "parser.y"
+#line 36 "parser.y"
