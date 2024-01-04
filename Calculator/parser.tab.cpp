@@ -429,7 +429,7 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  7
+#define YYNRULES  6
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  12
 
@@ -481,7 +481,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    29,    29,    30,    30,    32,    32,    33
+       0,    29,    29,    29,    31,    31,    32
 };
 #endif
 
@@ -540,8 +540,8 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     0,     3,     0,     0,     5,     2,     7,     1,     2,
-       4,     6
+       0,     0,     2,     0,     0,     4,     0,     6,     1,     0,
+       3,     5
 };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -580,13 +580,13 @@ static const yytype_int8 yystos[] =
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,     7,     8,     9,     8,    10,     8,     8
+       0,     7,     9,     8,    10,     8,     8
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     0,     0,     3,     0,     4,     2
+       0,     2,     0,     3,     0,     4,     2
 };
 
 
@@ -1053,21 +1053,21 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 3: /* $@1: %empty  */
-#line 30 "parser.y"
+  case 2: /* $@1: %empty  */
+#line 29 "parser.y"
                 { std::cout << "\n> "; }
 #line 1060 "parser.tab.cpp"
     break;
 
-  case 5: /* $@2: %empty  */
-#line 32 "parser.y"
+  case 4: /* $@2: %empty  */
+#line 31 "parser.y"
                         { std::cout << "Получил - " << yylval.text << "\n> "; }
 #line 1066 "parser.tab.cpp"
     break;
 
-  case 7: /* programm: T_EXIT T_EOL  */
-#line 33 "parser.y"
-                       {  std::cout << "Shutdown"; exit(1); }
+  case 6: /* programm: T_EXIT T_EOL  */
+#line 32 "parser.y"
+                       {  std::cout << "Bye bye\n"; system("pause"); exit(1); }
 #line 1072 "parser.tab.cpp"
     break;
 
@@ -1266,4 +1266,4 @@ yyreturn:
   return yyresult;
 }
 
-#line 36 "parser.y"
+#line 35 "parser.y"
