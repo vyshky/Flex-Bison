@@ -13,34 +13,5 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Genereted Files">
-      <UniqueIdentifier>{1f1162e4-6516-4439-b72f-28fdacad691b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Flex&amp;Bison Files">
-      <UniqueIdentifier>{7eda0b92-6baa-4a0b-8370-254d2ea192d4}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="scaner.flex.cpp">
-      <Filter>Genereted Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Header.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Flex Include="scaner.l">
-      <Filter>Flex&amp;Bison Files</Filter>
-    </Flex>
-  </ItemGroup>
-  <ItemGroup>
-    <Bison Include="parser.y">
-      <Filter>Flex&amp;Bison Files</Filter>
-    </Bison>
   </ItemGroup>
 </Project>

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7adc57ba-b0d4-40ea-af1c-cfc68d5700fe}</ProjectGuid>
-    <RootNamespace>Calculator</RootNamespace>
+    <ProjectGuid>{9d7f4ee3-fca2-4d67-b57c-302d9d1e98d1}</ProjectGuid>
+    <RootNamespace>TestProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,21 +127,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="scaner.flex.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Header.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Bison Include="parser.y">
-      <FileType>Document</FileType>
-    </Bison>
-  </ItemGroup>
-  <ItemGroup>
-    <Flex Include="scaner.l" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\..\..\..\..\..\Dev\win_flex_bison\custom_build_rules\win_flex_bison\win_flex_bison_custom_build.targets" />
