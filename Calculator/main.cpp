@@ -1,14 +1,22 @@
 #include <iostream>
-#include "Header.h"
+#include "parser.tab.h"
+
+extern int yylineno;
 
 int main()
 {	
 	setlocale(LC_ALL, "Russian");
 	std::cout << "> ";
-	yylex();
-	//yyparse();
+	//yylex();
+	yyparse();	
 	return 0;
 }
+
+void yyerror(const char* s)
+{
+	fprintf(stderr, "error: %s on line %d\n", s, yylineno);
+}
+
 
 
 //	Since C++11 converting string to floating - point values(like double) is available with functions :
