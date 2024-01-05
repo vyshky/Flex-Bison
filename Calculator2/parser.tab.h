@@ -57,9 +57,9 @@ extern int yydebug;
     T_NUMBER = 258,                /* T_NUMBER  */
     T_PLUS = 259,                  /* T_PLUS  */
     T_MINUS = 260,                 /* T_MINUS  */
-    T_MULT = 261,                  /* T_MULT  */
-    T_DIV = 262,                   /* T_DIV  */
-    EOL = 263                      /* EOL  */
+    EOL = 261,                     /* EOL  */
+    T_MULT = 262,                  /* T_MULT  */
+    T_DIV = 263                    /* T_DIV  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -68,7 +68,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 16 "parser.y"
+#line 15 "parser.y"
 
  double value;
 

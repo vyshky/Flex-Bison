@@ -107,9 +107,9 @@ enum yysymbol_kind_t
   YYSYMBOL_T_NUMBER = 3,                   /* T_NUMBER  */
   YYSYMBOL_T_PLUS = 4,                     /* T_PLUS  */
   YYSYMBOL_T_MINUS = 5,                    /* T_MINUS  */
-  YYSYMBOL_T_MULT = 6,                     /* T_MULT  */
-  YYSYMBOL_T_DIV = 7,                      /* T_DIV  */
-  YYSYMBOL_EOL = 8,                        /* EOL  */
+  YYSYMBOL_EOL = 6,                        /* EOL  */
+  YYSYMBOL_T_MULT = 7,                     /* T_MULT  */
+  YYSYMBOL_T_DIV = 8,                      /* T_DIV  */
   YYSYMBOL_YYACCEPT = 9,                   /* $accept  */
   YYSYMBOL_programma = 10,                 /* programma  */
   YYSYMBOL_expression = 11,                /* expression  */
@@ -423,7 +423,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   22
+#define YYLAST   20
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  9
@@ -500,7 +500,7 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "T_NUMBER", "T_PLUS",
-  "T_MINUS", "T_MULT", "T_DIV", "EOL", "$accept", "programma",
+  "T_MINUS", "EOL", "T_MULT", "T_DIV", "$accept", "programma",
   "expression", "result", YY_NULLPTR
 };
 
@@ -534,8 +534,8 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -5,     9,    -5,    -5,     8,    -5,    14,    -5,     4,     8,
-       8,     8,     8,    -5,     4,     4,    -3,     4
+      -5,     7,    -5,    -5,    -2,    -5,    10,    -5,    12,    -2,
+      -2,    -5,    -2,    -2,    12,    12,    12,    12
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -544,7 +544,7 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        2,     0,     1,     4,     0,    10,     0,     3,     7,     0,
-       0,     0,     0,    11,     5,     6,     8,     9
+       0,    11,     0,     0,     5,     6,     8,     9
 };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -564,23 +564,23 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       8,     9,    10,    11,    12,    14,    15,    16,    17,     2,
-      11,     3,     3,     4,     4,     0,     0,     5,     9,    10,
-      11,    12,    13
+       8,     3,     0,     4,     0,    14,    15,     2,    16,    17,
+       3,     0,     4,     5,     9,    10,    11,    12,    13,    12,
+      13
 };
 
 static const yytype_int8 yycheck[] =
 {
-       4,     4,     5,     6,     7,     9,    10,    11,    12,     0,
-       6,     3,     3,     5,     5,    -1,    -1,     8,     4,     5,
-       6,     7,     8
+       4,     3,    -1,     5,    -1,     9,    10,     0,    12,    13,
+       3,    -1,     5,     6,     4,     5,     6,     7,     8,     7,
+       8
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    10,     0,     3,     5,     8,    11,    12,    11,     4,
+       0,    10,     0,     3,     5,     6,    11,    12,    11,     4,
        5,     6,     7,     8,    11,    11,    11,    11
 };
 
@@ -1062,56 +1062,50 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 3: /* programma: programma result  */
-#line 49 "parser.y"
-                           { std::cout<< "programma\n"; }
-#line 1069 "parser.tab.cpp"
-    break;
-
   case 4: /* expression: T_NUMBER  */
 #line 52 "parser.y"
                      { (yyval.value) = (yyvsp[0].value); }
-#line 1075 "parser.tab.cpp"
+#line 1069 "parser.tab.cpp"
     break;
 
   case 5: /* expression: expression T_PLUS expression  */
 #line 53 "parser.y"
-                                       { (yyval.value) = (yyvsp[-2].value) + (yyvsp[0].value); }
-#line 1081 "parser.tab.cpp"
+                                       { (yyval.value) = (yyvsp[-2].value) + (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " + " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) + (yyvsp[0].value) << "\n"; }
+#line 1075 "parser.tab.cpp"
     break;
 
   case 6: /* expression: expression T_MINUS expression  */
 #line 54 "parser.y"
-                                        { (yyval.value) = (yyvsp[-2].value) - (yyvsp[0].value); }
-#line 1087 "parser.tab.cpp"
+                                        { (yyval.value) = (yyvsp[-2].value) - (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " - " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) - (yyvsp[0].value) << "\n"; }
+#line 1081 "parser.tab.cpp"
     break;
 
   case 7: /* expression: T_MINUS expression  */
 #line 55 "parser.y"
                              { (yyval.value) = -(yyvsp[0].value); }
-#line 1093 "parser.tab.cpp"
+#line 1087 "parser.tab.cpp"
     break;
 
   case 8: /* expression: expression T_MULT expression  */
 #line 56 "parser.y"
-                                       { (yyval.value) = (yyvsp[-2].value) * (yyvsp[0].value); }
-#line 1099 "parser.tab.cpp"
+                                       { (yyval.value) = (yyvsp[-2].value) * (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " * " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) * (yyvsp[0].value) << "\n"; }
+#line 1093 "parser.tab.cpp"
     break;
 
   case 9: /* expression: expression T_DIV expression  */
 #line 57 "parser.y"
                                       { (yyval.value) = (yyvsp[-2].value) / (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " : " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) / (yyvsp[0].value) << "\n"; }
-#line 1105 "parser.tab.cpp"
+#line 1099 "parser.tab.cpp"
     break;
 
   case 11: /* result: expression EOL  */
 #line 61 "parser.y"
                          { std::cout << "Result = " << (yyvsp[-1].value) << "\n"; }
-#line 1111 "parser.tab.cpp"
+#line 1105 "parser.tab.cpp"
     break;
 
 
-#line 1115 "parser.tab.cpp"
+#line 1109 "parser.tab.cpp"
 
       default: break;
     }

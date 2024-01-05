@@ -8,10 +8,9 @@
 —труктура %token
 	| %token T_NUMBER - —оздание токена без прив€зок к значени€м из структуры
 	| %token <value> T_NUMBER - —оздание токена с прив€зкой к <value> из структуры union
+	| %token T_NUMBER 300 - задаетс€ enum значение 300, такое лучше не делать, могут возникнуть конфликты. ѕусть bison сам моздать id дл€ токена
 */
-%token T_NUMBER
-%token T_PLUS T_MINUS T_MULT T_DIV
-%token EOL
+%token T_NUMBER T_PLUS T_MINUS EOL
 
 %union{
  double value;
@@ -33,7 +32,8 @@
 	| %right <value> token
 	| %left <value> token
 */
-%left T_MINUS T_PLUS T_DIV 
+%left T_MINUS T_PLUS
+%right T_MULT T_DIV
 %start programma
 %%
 /*
@@ -46,14 +46,14 @@
 */
 
 programma:
-	| programma result { std::cout<< "programma\n"; } // pragramma == '' - то есть равно пустоте это правило будет вызванно при любом действии, так как ни какой токен не прив€зан к этому компоненту |||||||| result == EOL - при нажатии enter будет вызыватьс€ правило ниже. ќно делает переход в правило result и ищет совпадени€
+	| programma result // рекурсивный вызов нетерминала. pragramma == '' - то есть равно пустоте это правило будет вызванно при любом действии, так как ни какой токен не прив€зан к этому компоненту. result == EOL - при нажатии enter будет вызыватьс€ правило ниже. ќно делает переход в правило result и ищет совпадени€
 	;
 
 expression: T_NUMBER { $$ = $1; }
-	| expression T_PLUS expression { $$ = $1 + $3; }
-	| expression T_MINUS expression { $$ = $1 - $3; }
+	| expression T_PLUS expression { $$ = $1 + $3; std::cout << $1 << " + " << $3 << " = " << $1 + $3 << "\n"; }
+	| expression T_MINUS expression { $$ = $1 - $3; std::cout << $1 << " - " << $3 << " = " << $1 - $3 << "\n"; }
 	| T_MINUS expression { $$ = -$2; }
-	| expression T_MULT expression { $$ = $1 * $3; }
+	| expression T_MULT expression { $$ = $1 * $3; std::cout << $1 << " * " << $3 << " = " << $1 * $3 << "\n"; }
 	| expression T_DIV expression { $$ = $1 / $3; std::cout << $1 << " : " << $3 << " = " << $1 / $3 << "\n"; }
 	;
 
