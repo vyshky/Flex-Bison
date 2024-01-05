@@ -54,10 +54,12 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    T_PLUS = 258,                  /* T_PLUS  */
-    T_MINUS = 259,                 /* T_MINUS  */
-    EOL = 260,                     /* EOL  */
-    T_NUMBER = 261                 /* T_NUMBER  */
+    T_NUMBER = 258,                /* T_NUMBER  */
+    T_PLUS = 259,                  /* T_PLUS  */
+    T_MINUS = 260,                 /* T_MINUS  */
+    T_MULT = 261,                  /* T_MULT  */
+    T_DIV = 262,                   /* T_DIV  */
+    EOL = 263                      /* EOL  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -66,11 +68,11 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 11 "parser.y"
+#line 16 "parser.y"
 
  double value;
 
-#line 74 "parser.tab.h"
+#line 76 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

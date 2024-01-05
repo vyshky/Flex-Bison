@@ -16,5 +16,7 @@
 [0-9]+\.[0-9]+\. { /*EMPTY*/ }
 "+" { return T_PLUS; }
 "-" { return T_MINUS; }
+"*" { return T_MULT; }
+"/" { return T_DIV; }
 \n { return EOL; }
 %%

@@ -10,7 +10,7 @@
 %token <value> T_NUMBER - —оздание токена с прив€зкой к <value> из структуры union
 */
 %token T_NUMBER
-%token T_PLUS T_MINUS
+%token T_PLUS T_MINUS T_MULT T_DIV
 %token EOL
 
 %union{
@@ -21,9 +21,19 @@
 —труктура %type
 %type <value> expression T_NUMBER - —оздание прив€зки <value> из структуры union к нетерминалу expression и за одно <value> прив€зываетс€ к токену T_NUMBER
 %type <value> expression - —оздание прив€зки <value> из структуры union к нетерминалу expression
-%type <value> T_NUMBER - —оздание прив€зки <value> из структуры union к токену T_NUMBER
+%type <value> T_NUMBER - —оздание прив€зки <value> из структуры union к токену expression
 */
 %type <value> expression T_NUMBER // %type <value> exp - указывает на, то что exp будет типом value, а TOKEN_NUMBER это прив€зка токена из которого будет братьс€ значение
+
+/*
+ѕо дефолту все токены(%right) воспроизвод€тс€ справо -> налево и при минусе, плюсе, делении, нужно считывать слево направо, опцией %left
+ѕример: x op y op z - по дефолту(%right),сначало выполнитс€ последн€€ операци y op z. ≈сли пропишем %left op, то операции будут выполн€тс€ с первой операции x op y
+%right token
+%left token
+%right <value> token
+%left <value> token
+*/
+%left T_MINUS T_PLUS 
 %start programma
 %%
 /*
@@ -43,7 +53,8 @@ expression: T_NUMBER { $$ = $1; }
 	| expression T_PLUS expression { $$ = $1 + $3; }
 	| expression T_MINUS expression { $$ = $1 - $3; }
 	| T_MINUS expression { $$ = -$2; }
-	| T_MINUS expression T_MINUS T_MINUS expression { $$ = $2 + $5; }
+	| expression T_MULT expression { $$ = $1 * $3; }
+	| expression T_DIV expression { $$ = $1 / $3; std::cout << $1 << " : " << $3 << " = " << $1 / $3 << "\n"; }
 	;
 
 result: EOL
