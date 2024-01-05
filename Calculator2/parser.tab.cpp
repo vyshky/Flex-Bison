@@ -482,8 +482,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    48,    48,    49,    52,    53,    56,    57,    58,    59,
-      60,    61
+       0,    57,    57,    58,    61,    62,    65,    66,    67,    68,
+      69,    70
 };
 #endif
 
@@ -1063,49 +1063,49 @@ yyreduce:
   switch (yyn)
     {
   case 3: /* programma: programma result  */
-#line 49 "parser.y"
+#line 58 "parser.y"
                            { std::cout << "start programm\n"; }
 #line 1069 "parser.tab.cpp"
     break;
 
   case 5: /* result: expression EOL  */
-#line 53 "parser.y"
+#line 62 "parser.y"
                          { std::cout << "Result = " << (yyvsp[-1].value) << "\n"; }
 #line 1075 "parser.tab.cpp"
     break;
 
   case 6: /* expression: T_NUMBER  */
-#line 56 "parser.y"
+#line 65 "parser.y"
                      { (yyval.value) = (yyvsp[0].value); }
 #line 1081 "parser.tab.cpp"
     break;
 
   case 7: /* expression: expression T_PLUS expression  */
-#line 57 "parser.y"
+#line 66 "parser.y"
                                        { (yyval.value) = (yyvsp[-2].value) + (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " + " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) + (yyvsp[0].value) << "\n"; }
 #line 1087 "parser.tab.cpp"
     break;
 
   case 8: /* expression: expression T_MINUS expression  */
-#line 58 "parser.y"
+#line 67 "parser.y"
                                         { (yyval.value) = (yyvsp[-2].value) - (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " - " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) - (yyvsp[0].value) << "\n"; }
 #line 1093 "parser.tab.cpp"
     break;
 
   case 9: /* expression: T_MINUS expression  */
-#line 59 "parser.y"
+#line 68 "parser.y"
                              { (yyval.value) = -(yyvsp[0].value); }
 #line 1099 "parser.tab.cpp"
     break;
 
   case 10: /* expression: expression T_MULT expression  */
-#line 60 "parser.y"
+#line 69 "parser.y"
                                        { (yyval.value) = (yyvsp[-2].value) * (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " * " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) * (yyvsp[0].value) << "\n"; }
 #line 1105 "parser.tab.cpp"
     break;
 
   case 11: /* expression: expression T_DIV expression  */
-#line 61 "parser.y"
+#line 70 "parser.y"
                                       { (yyval.value) = (yyvsp[-2].value) / (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " : " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) / (yyvsp[0].value) << "\n"; }
 #line 1111 "parser.tab.cpp"
     break;
@@ -1305,4 +1305,4 @@ yyreturn:
   return yyresult;
 }
 
-#line 64 "parser.y"
+#line 73 "parser.y"
