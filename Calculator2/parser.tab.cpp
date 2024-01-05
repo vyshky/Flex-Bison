@@ -112,8 +112,8 @@ enum yysymbol_kind_t
   YYSYMBOL_T_DIV = 8,                      /* T_DIV  */
   YYSYMBOL_YYACCEPT = 9,                   /* $accept  */
   YYSYMBOL_programma = 10,                 /* programma  */
-  YYSYMBOL_expression = 11,                /* expression  */
-  YYSYMBOL_result = 12                     /* result  */
+  YYSYMBOL_result = 11,                    /* result  */
+  YYSYMBOL_expression = 12                 /* expression  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -482,7 +482,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    48,    48,    49,    52,    53,    54,    55,    56,    57,
+       0,    48,    48,    49,    52,    53,    56,    57,    58,    59,
       60,    61
 };
 #endif
@@ -500,8 +500,8 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "T_NUMBER", "T_PLUS",
-  "T_MINUS", "EOL", "T_MULT", "T_DIV", "$accept", "programma",
-  "expression", "result", YY_NULLPTR
+  "T_MINUS", "EOL", "T_MULT", "T_DIV", "$accept", "programma", "result",
+  "expression", YY_NULLPTR
 };
 
 static const char *
@@ -534,7 +534,7 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -5,     7,    -5,    -5,    -2,    -5,    10,    -5,    12,    -2,
+      -5,     7,    -5,    -5,    -2,    -5,    -5,    10,    12,    -2,
       -2,    -5,    -2,    -2,    12,    12,    12,    12
 };
 
@@ -543,14 +543,14 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     0,     1,     4,     0,    10,     0,     3,     7,     0,
-       0,    11,     0,     0,     5,     6,     8,     9
+       2,     0,     1,     6,     0,     4,     3,     0,     9,     0,
+       0,     5,     0,     0,     7,     8,    10,    11
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -5,    -5,    -4,    -5
+      -5,    -5,    -5,    -4
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -580,22 +580,22 @@ static const yytype_int8 yycheck[] =
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    10,     0,     3,     5,     6,    11,    12,    11,     4,
-       5,     6,     7,     8,    11,    11,    11,    11
+       0,    10,     0,     3,     5,     6,    11,    12,    12,     4,
+       5,     6,     7,     8,    12,    12,    12,    12
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,     9,    10,    10,    11,    11,    11,    11,    11,    11,
+       0,     9,    10,    10,    11,    11,    12,    12,    12,    12,
       12,    12
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     0,     2,     1,     3,     3,     2,     3,     3,
-       1,     2
+       0,     2,     0,     2,     1,     2,     1,     3,     3,     2,
+       3,     3
 };
 
 
@@ -1062,50 +1062,56 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 4: /* expression: T_NUMBER  */
-#line 52 "parser.y"
-                     { (yyval.value) = (yyvsp[0].value); }
+  case 3: /* programma: programma result  */
+#line 49 "parser.y"
+                           { std::cout << "start programm\n"; }
 #line 1069 "parser.tab.cpp"
     break;
 
-  case 5: /* expression: expression T_PLUS expression  */
+  case 5: /* result: expression EOL  */
 #line 53 "parser.y"
-                                       { (yyval.value) = (yyvsp[-2].value) + (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " + " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) + (yyvsp[0].value) << "\n"; }
+                         { std::cout << "Result = " << (yyvsp[-1].value) << "\n"; }
 #line 1075 "parser.tab.cpp"
     break;
 
-  case 6: /* expression: expression T_MINUS expression  */
-#line 54 "parser.y"
-                                        { (yyval.value) = (yyvsp[-2].value) - (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " - " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) - (yyvsp[0].value) << "\n"; }
+  case 6: /* expression: T_NUMBER  */
+#line 56 "parser.y"
+                     { (yyval.value) = (yyvsp[0].value); }
 #line 1081 "parser.tab.cpp"
     break;
 
-  case 7: /* expression: T_MINUS expression  */
-#line 55 "parser.y"
-                             { (yyval.value) = -(yyvsp[0].value); }
+  case 7: /* expression: expression T_PLUS expression  */
+#line 57 "parser.y"
+                                       { (yyval.value) = (yyvsp[-2].value) + (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " + " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) + (yyvsp[0].value) << "\n"; }
 #line 1087 "parser.tab.cpp"
     break;
 
-  case 8: /* expression: expression T_MULT expression  */
-#line 56 "parser.y"
-                                       { (yyval.value) = (yyvsp[-2].value) * (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " * " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) * (yyvsp[0].value) << "\n"; }
+  case 8: /* expression: expression T_MINUS expression  */
+#line 58 "parser.y"
+                                        { (yyval.value) = (yyvsp[-2].value) - (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " - " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) - (yyvsp[0].value) << "\n"; }
 #line 1093 "parser.tab.cpp"
     break;
 
-  case 9: /* expression: expression T_DIV expression  */
-#line 57 "parser.y"
-                                      { (yyval.value) = (yyvsp[-2].value) / (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " : " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) / (yyvsp[0].value) << "\n"; }
+  case 9: /* expression: T_MINUS expression  */
+#line 59 "parser.y"
+                             { (yyval.value) = -(yyvsp[0].value); }
 #line 1099 "parser.tab.cpp"
     break;
 
-  case 11: /* result: expression EOL  */
-#line 61 "parser.y"
-                         { std::cout << "Result = " << (yyvsp[-1].value) << "\n"; }
+  case 10: /* expression: expression T_MULT expression  */
+#line 60 "parser.y"
+                                       { (yyval.value) = (yyvsp[-2].value) * (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " * " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) * (yyvsp[0].value) << "\n"; }
 #line 1105 "parser.tab.cpp"
     break;
 
+  case 11: /* expression: expression T_DIV expression  */
+#line 61 "parser.y"
+                                      { (yyval.value) = (yyvsp[-2].value) / (yyvsp[0].value); std::cout << (yyvsp[-2].value) << " : " << (yyvsp[0].value) << " = " << (yyvsp[-2].value) / (yyvsp[0].value) << "\n"; }
+#line 1111 "parser.tab.cpp"
+    break;
 
-#line 1109 "parser.tab.cpp"
+
+#line 1115 "parser.tab.cpp"
 
       default: break;
     }
