@@ -6,8 +6,8 @@
 
 /*
 —труктура %token
-%token T_NUMBER - —оздание токена без прив€зок к значени€м из структуры
-%token <value> T_NUMBER - —оздание токена с прив€зкой к <value> из структуры union
+	| %token T_NUMBER - —оздание токена без прив€зок к значени€м из структуры
+	| %token <value> T_NUMBER - —оздание токена с прив€зкой к <value> из структуры union
 */
 %token T_NUMBER
 %token T_PLUS T_MINUS T_MULT T_DIV
@@ -19,21 +19,21 @@
 
 /*
 —труктура %type
-%type <value> expression T_NUMBER - —оздание прив€зки <value> из структуры union к нетерминалу expression и за одно <value> прив€зываетс€ к токену T_NUMBER
-%type <value> expression - —оздание прив€зки <value> из структуры union к нетерминалу expression
-%type <value> T_NUMBER - —оздание прив€зки <value> из структуры union к токену expression
+	| %type <value> expression T_NUMBER - —оздание прив€зки <value> из структуры union к нетерминалу expression и за одно <value> прив€зываетс€ к токену T_NUMBER
+	| %type <value> expression - —оздание прив€зки <value> из структуры union к нетерминалу expression
+	| %type <value> T_NUMBER - —оздание прив€зки <value> из структуры union к токену expression
 */
 %type <value> expression T_NUMBER // %type <value> exp - указывает на, то что exp будет типом value, а TOKEN_NUMBER это прив€зка токена из которого будет братьс€ значение
 
 /*
 ѕо дефолту все токены(%right) воспроизвод€тс€ справо -> налево и при минусе, плюсе, делении, нужно считывать слево направо, опцией %left
 ѕример: x op y op z - по дефолту(%right),сначало выполнитс€ последн€€ операци y op z. ≈сли пропишем %left op, то операции будут выполн€тс€ с первой операции x op y
-%right token
-%left token
-%right <value> token
-%left <value> token
+	| %right token
+	| %left token
+	| %right <value> token
+	| %left <value> token
 */
-%left T_MINUS T_PLUS 
+%left T_MINUS T_PLUS T_DIV 
 %start programma
 %%
 /*
