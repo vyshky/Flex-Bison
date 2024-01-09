@@ -10,7 +10,9 @@
 	| %token <value> T_NUMBER - Создание токена с привязкой к <value> из структуры union
 	| %token T_NUMBER 300 - задается enum значение 300, такое лучше не делать, могут возникнуть конфликты. Пусть bison сам моздать id для токена
 */
-%token T_NUMBER T_PLUS T_MINUS EOL
+
+%token T_NUMBER EOL
+%token T_RIGHT_BRACKET T_LEFT_BRACKET
 
 %union{
  double value;
@@ -33,8 +35,10 @@
 	| %right <value> token
 	| %left <value> token
 */
+
 %left T_MINUS T_PLUS
-%right T_MULT T_DIV
+%left T_MULT T_DIV T_EXPON
+
 %start programma
 %%
 /*
@@ -63,12 +67,13 @@ result: EOL
 	| expression EOL { std::cout << "Result = " << $1 << "\n"; }
 	;
 
-expression: T_NUMBER { $$ = $1; }
+expression: T_NUMBER { $$ = $1; } // Дейстивие не обязательно, работать будет так же
 	| expression T_PLUS expression { $$ = $1 + $3; std::cout << $1 << " + " << $3 << " = " << $1 + $3 << "\n"; }
 	| expression T_MINUS expression { $$ = $1 - $3; std::cout << $1 << " - " << $3 << " = " << $1 - $3 << "\n"; }
 	| T_MINUS expression { $$ = -$2; }
 	| expression T_MULT expression { $$ = $1 * $3; std::cout << $1 << " * " << $3 << " = " << $1 * $3 << "\n"; }
 	| expression T_DIV expression { $$ = $1 / $3; std::cout << $1 << " : " << $3 << " = " << $1 / $3 << "\n"; }
+	| T_LEFT_BRACKET expression T_RIGHT_BRACKET { $$ = $2; }
 	;
 
 %%
