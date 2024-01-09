@@ -1,5 +1,6 @@
 %{
 	#include <iostream>
+	#include <cmath>
 	void yyerror(const char* s);
 	int yylex();
 %}
@@ -37,7 +38,8 @@
 */
 
 %left T_MINUS T_PLUS
-%left T_MULT T_DIV T_EXPON
+%left T_MULT T_DIV 
+%left T_EXPON
 
 %start programma
 %%
@@ -74,6 +76,7 @@ expression: T_NUMBER { $$ = $1; } // Дейстивие не обязательно, работать будет та
 	| expression T_MULT expression { $$ = $1 * $3; std::cout << $1 << " * " << $3 << " = " << $1 * $3 << "\n"; }
 	| expression T_DIV expression { $$ = $1 / $3; std::cout << $1 << " : " << $3 << " = " << $1 / $3 << "\n"; }
 	| T_LEFT_BRACKET expression T_RIGHT_BRACKET { $$ = $2; }
+	| expression T_EXPON expression { $$ = pow($1,$3);  std::cout << $1 << " ^ " << $3 << " = " << pow($1,$3) << "\n"; }
 	;
 
 %%
