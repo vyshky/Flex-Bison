@@ -56,8 +56,8 @@ extern int yydebug;
     YYUNDEF = 257,                 /* "invalid token"  */
     T_NUMBER = 258,                /* T_NUMBER  */
     EOL = 259,                     /* EOL  */
-    T_RIGHT_BRACKET = 260,         /* T_RIGHT_BRACKET  */
-    T_LEFT_BRACKET = 261,          /* T_LEFT_BRACKET  */
+    T_LEFT_BRACKET = 260,          /* T_LEFT_BRACKET  */
+    T_RIGHT_BRACKET = 261,         /* T_RIGHT_BRACKET  */
     T_MINUS = 262,                 /* T_MINUS  */
     T_PLUS = 263,                  /* T_PLUS  */
     T_MULT = 264,                  /* T_MULT  */

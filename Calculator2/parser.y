@@ -13,7 +13,7 @@
 */
 
 %token T_NUMBER EOL
-%token T_RIGHT_BRACKET T_LEFT_BRACKET
+%token T_LEFT_BRACKET T_RIGHT_BRACKET
 
 %union{
  double value;

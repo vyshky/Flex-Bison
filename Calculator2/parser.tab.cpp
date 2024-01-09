@@ -107,8 +107,8 @@ enum yysymbol_kind_t
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
   YYSYMBOL_T_NUMBER = 3,                   /* T_NUMBER  */
   YYSYMBOL_EOL = 4,                        /* EOL  */
-  YYSYMBOL_T_RIGHT_BRACKET = 5,            /* T_RIGHT_BRACKET  */
-  YYSYMBOL_T_LEFT_BRACKET = 6,             /* T_LEFT_BRACKET  */
+  YYSYMBOL_T_LEFT_BRACKET = 5,             /* T_LEFT_BRACKET  */
+  YYSYMBOL_T_RIGHT_BRACKET = 6,            /* T_RIGHT_BRACKET  */
   YYSYMBOL_T_MINUS = 7,                    /* T_MINUS  */
   YYSYMBOL_T_PLUS = 8,                     /* T_PLUS  */
   YYSYMBOL_T_MULT = 9,                     /* T_MULT  */
@@ -427,7 +427,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   37
+#define YYLAST   36
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  12
@@ -504,7 +504,7 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "T_NUMBER", "EOL",
-  "T_RIGHT_BRACKET", "T_LEFT_BRACKET", "T_MINUS", "T_PLUS", "T_MULT",
+  "T_LEFT_BRACKET", "T_RIGHT_BRACKET", "T_MINUS", "T_PLUS", "T_MULT",
   "T_DIV", "T_EXPON", "$accept", "programma", "result", "expression", YY_NULLPTR
 };
 
@@ -539,8 +539,8 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -9,    20,    -9,    -9,    -9,    -1,    -1,    -9,     8,    23,
-      26,    -9,    -1,    -1,    -1,    -1,    -1,    -9,    26,    26,
+      -9,    20,    -9,    -9,    -9,    -1,    -1,    -9,     8,    22,
+      25,    -9,    -1,    -1,    -1,    -1,    -1,    -9,    25,    25,
       -8,    -8,    -9
 };
 
@@ -571,26 +571,26 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       9,    10,     3,    16,     0,     5,     6,    18,    19,    20,
+       9,    10,     3,    16,     5,     0,     6,    18,    19,    20,
       21,    22,    11,     0,     0,    12,    13,    14,    15,    16,
-       2,     0,     0,     3,     4,     0,     5,     6,    17,     0,
-      12,    13,    14,    15,    16,    14,    15,    16
+       2,     0,     0,     3,     4,     5,     0,     6,    17,    12,
+      13,    14,    15,    16,    14,    15,    16
 };
 
 static const yytype_int8 yycheck[] =
 {
-       5,     6,     3,    11,    -1,     6,     7,    12,    13,    14,
+       5,     6,     3,    11,     5,    -1,     7,    12,    13,    14,
       15,    16,     4,    -1,    -1,     7,     8,     9,    10,    11,
-       0,    -1,    -1,     3,     4,    -1,     6,     7,     5,    -1,
-       7,     8,     9,    10,    11,     9,    10,    11
+       0,    -1,    -1,     3,     4,     5,    -1,     7,     6,     7,
+       8,     9,    10,    11,     9,    10,    11
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    13,     0,     3,     4,     6,     7,    14,    15,    15,
-      15,     4,     7,     8,     9,    10,    11,     5,    15,    15,
+       0,    13,     0,     3,     4,     5,     7,    14,    15,    15,
+      15,     4,     7,     8,     9,    10,    11,     6,    15,    15,
       15,    15,    15
 };
 
